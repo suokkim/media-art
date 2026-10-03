@@ -157,3 +157,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 1.05rem; line-height: 40px; text-align: center; opacity: .7; transition: opacity .3s; }
 .to-top:hover { opacity: 1; }
 .to-top[hidden] { display: none; }
+
+/* Connect */
+.connect { border-top: 1px solid var(--line); }
+.connect-label { margin: 0 0 6px; font-size: .72rem; letter-spacing: .12em; color: var(--muted); }
+.connect a { font-size: .9rem; }
+.connect a:hover { text-decoration: underline; text-underline-offset: 3px; }
