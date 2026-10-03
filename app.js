@@ -3,8 +3,8 @@
 const SITE = "https://suokkim.github.io/media-art/";
 const CATS = ["unreal", "tiktok", "realtime", "drawing"];
 // 분류 버튼은 짧은 이름 — 휴대폰에서 한 줄에 들어가게. 아래 묶음 제목은 원래 이름 (디렉터 10-03)
-const SHORT = { ko: { all: "전체", unreal: "다큐", tiktok: "코미디", realtime: "미디어아트", drawing: "드로잉" },
-  en: { all: "All", unreal: "Docu", tiktok: "Comedy", realtime: "Media", drawing: "Drawing" } };
+const SHORT = { ko: { all: "전체", unreal: "다큐", tiktok: "B코미디", realtime: "미디어아트", drawing: "드로잉" },
+  en: { all: "All", unreal: "Docu", tiktok: "B.Comedy", realtime: "Media", drawing: "Drawing" } };
 
 const T = {
   ko: {
