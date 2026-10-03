@@ -8,16 +8,19 @@ const T = {
     sub: "미디어아트", share: "공유", sms: "문자로 보내기", qr: "QR 크게 보기", close: "닫기",
     tapclose: "아무 데나 누르면 닫힙니다", back: "← 목록", prev: "← 이전", next: "다음 →",
     tech: "게임 엔진을 활용한 실시간 재생 비디오", smsBody: "rgbk 미디어아트", lang: "EN",
+    all: "전체", unreal: "도큐멘터리", tiktok: "블랙코미디", realtime: "미디어아트",
   },
   en: {
     sub: "Media art", share: "Share", sms: "Send by text message", qr: "Show QR code", close: "Close",
     tapclose: "Tap anywhere to close", back: "← All works", prev: "← Previous", next: "Next →",
     tech: "Real-time playback video using a game engine", smsBody: "rgbk — media art", lang: "KO",
+    all: "All", unreal: "Documentary", tiktok: "Black comedy", realtime: "Media art",
   },
 };
 
 let lang = pickLang();
 let works = [], media = {};
+let cat = "all";   // 분류: all | unreal(도큐멘터리) | tiktok(블랙코미디) | realtime(미디어아트) — 포트폴리오와 같은 방식 (디렉터 10-03)
 
 function pickLang() {
   const q = new URLSearchParams(location.search).get("lang");
@@ -50,11 +53,21 @@ function card(w) {
   </a>`;
 }
 
+// split 작품(minecraft…)은 목록에서 영상 하나하나를 카드로 꺼내 보인다 (디렉터 10-03)
+function cards(w) {
+  if (!w.split) return card(w);
+  return (media[w.slug] || []).map((m, k) => `<a class="card" href="#/${w.slug}/${k + 1}">
+    <div class="thumb"><img src="${m.poster || m.src}" alt="${esc(m.caption || "")}" loading="lazy"></div>
+    <h2>${esc(m.caption || String(k + 1))}</h2>
+    <div class="meta">${esc(L(w.title))}</div>
+  </a>`).join("");
+}
+
 function listView() {
   document.title = "rgbk — media art";
-  return CATS.map((c) => {
+  return CATS.filter((c) => cat === "all" || cat === c).map((c) => {
     const ws = works.filter((w) => w.cat === c);
-    return ws.length ? `<section class="group"><h3>${c}</h3><div class="grid">${ws.map(card).join("")}</div></section>` : "";
+    return ws.length ? `<section class="group"><h3>${t(c)}</h3><div class="grid">${ws.map(cards).join("")}</div></section>` : "";
   }).join("");
 }
 
@@ -85,7 +98,7 @@ function workView(w) {
   return `<article class="work">
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(L(w.title))}</h1>
-    <div class="meta" style="color:var(--muted);font-size:.85rem;margin:-8px 0 16px">${[w.year, w.cat].filter(Boolean).join(" · ")}${w.tech ? " · " + t("tech") : ""}</div>
+    <div class="meta" style="color:var(--muted);font-size:.85rem;margin:-8px 0 16px">${[w.year, t(w.cat)].filter(Boolean).join(" · ")}${w.tech ? " · " + t("tech") : ""}</div>
     <p class="statement">${esc(L(w.text))}</p>
     <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
     ${body}
@@ -103,7 +116,7 @@ function clipView(w, n) {
   const name = m.caption || String(n);
   document.title = `${name} — ${L(w.title)} — rgbk`;
   return `<article class="work">
-    <a class="back" href="#/${w.slug}">← ${esc(L(w.title))}</a>
+    <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(name)}</h1>
     <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
     <div class="media"><figure><video src="${m.src}" poster="${m.poster}" controls playsinline muted autoplay loop preload="metadata"></video></figure></div>
@@ -120,9 +133,28 @@ function render() {
   document.getElementById("lang").textContent = t("lang");
   const [slug, n] = location.hash.replace(/^#\/?/, "").split("/");
   const w = works.find((x) => x.slug === slug);
+  const filter = document.getElementById("filter");
+  filter.innerHTML = ["all", ...CATS].map((c) =>
+    `<button type="button" data-cat="${c}" aria-pressed="${c === cat}">${t(c)}</button>`).join("");
+  filter.querySelectorAll("button").forEach((b) => (b.onclick = () => { cat = b.dataset.cat; w ? (location.hash = "#/") : render(); }));
   document.getElementById("view").innerHTML = w && n ? clipView(w, +n) : w ? workView(w) : listView();
+  watchCenter();
   document.querySelectorAll("#view .share-btn").forEach((b) => (b.onclick = openSheet));
 }
+
+// 휴대폰(마우스 호버 없음): 화면 세로 가운데에 가장 가까운 썸네일 한 줄만 제목이 올라온다 — 포트폴리오와 같음
+function watchCenter() {
+  if (matchMedia("(hover: hover)").matches) return;
+  const mid = innerHeight / 2;
+  let best = null, d = Infinity;
+  document.querySelectorAll("#view .card").forEach((c) => {
+    const r = c.getBoundingClientRect(), dc = Math.abs(r.top + r.height / 2 - mid);
+    if (dc < d) { d = dc; best = r.top; }
+  });
+  document.querySelectorAll("#view .card").forEach((c) => c.classList.toggle("on", c.getBoundingClientRect().top === best));
+}
+addEventListener("scroll", watchCenter, { passive: true });
+addEventListener("resize", watchCenter);
 
 // 공유 — 문자: 지금 보고 있는 페이지 주소 / QR: 사이트 첫 화면 주소
 function openSheet() {

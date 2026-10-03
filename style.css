@@ -38,19 +38,29 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* 목록 격자 */
 .grid {
-  display: grid; gap: 36px 14px; padding: 0 16px;
+  display: grid; gap: 14px; padding: 0 16px;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   max-width: 1280px; margin: 0 auto;
 }
-.card { display: block; }
+.card { display: block; position: relative; }
 .card .thumb { aspect-ratio: 4 / 3; background: var(--card); overflow: hidden; }
 .card img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  opacity: .92; transition: opacity .3s ease;
+  transition: opacity .3s ease;
 }
-.card:hover img { opacity: 1; }
-.card h2 { font-size: .85rem; font-weight: 400; margin: 10px 0 0; }
-.card .meta { color: var(--muted); font-size: .75rem; }
+/* 제목·연도는 썸네일 위에 겹쳐 두고 호버(휴대폰은 화면 가운데 .on) 때만 — 포트폴리오와 같음 (디렉터 10-03) */
+.card h2, .card .meta {
+  position: absolute; left: 14px; right: 14px; margin: 0;
+  opacity: 0; transform: translateY(10px); transition: opacity .35s ease, transform .35s ease; pointer-events: none;
+}
+.card h2 { bottom: 34px; font-size: .9rem; font-weight: 500; line-height: 1.35; }
+.card .meta { bottom: 14px; color: var(--ink); font-size: .75rem; }
+@media (hover: hover) {
+  .card:hover img { opacity: .2; }
+  .card:hover h2, .card:hover .meta { opacity: 1; transform: none; }
+}
+.card.on img, .card:focus-visible img { opacity: .2; }
+.card.on h2, .card.on .meta, .card:focus-visible h2, .card:focus-visible .meta { opacity: 1; transform: none; }
 
 /* 상세 */
 .work { max-width: 960px; margin: 0 auto; padding: 0 16px; }
