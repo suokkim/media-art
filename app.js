@@ -109,7 +109,6 @@ function workView(w) {
     <h1>${esc(L(w.title))}</h1>
     <div class="meta" style="color:var(--muted);font-size:.85rem;margin:-8px 0 16px">${[w.year, t(w.cat)].filter(Boolean).join(" · ")}${w.tech ? " · " + t("tech") : ""}</div>
     <p class="statement">${esc(L(w.text))}</p>
-    <div class="work-share"><button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button></div>
     ${body}
     <nav class="next">
       <span>${prev ? `<a href="#/${prev.slug}">${t("prev")}</a>` : ""}</span>
@@ -127,7 +126,6 @@ function clipView(w, n) {
   return `<article class="work">
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(name)}</h1>
-    <div class="work-share"><button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button></div>
     <div class="media"><figure><video src="${m.src}" poster="${m.poster}" controls playsinline muted autoplay loop preload="metadata"></video></figure></div>
     <nav class="next">
       <span>${n > 1 ? `<a href="#/${w.slug}/${n - 1}">${t("prev")}</a>` : ""}</span>
