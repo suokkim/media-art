@@ -2,6 +2,8 @@
 // 주소: #/ = 목록(노션과 같은 분류·순서), #/<slug> = 작품. 언어: ?lang=en 또는 KO/EN 버튼
 const SITE = "https://suokkim.github.io/media-art/";
 const CATS = ["unreal", "tiktok", "realtime", "drawing"];
+// 분류 버튼은 이모지만 — 이름은 아래 묶음 제목에 (디렉터 10-03 "카테고리를 간단하게")
+const EMOJI = { all: "✳️", unreal: "🎥", tiktok: "🃏", realtime: "📺", drawing: "✏️" };
 
 const T = {
   ko: {
@@ -141,7 +143,7 @@ function render() {
   const w = works.find((x) => x.slug === slug);
   const filter = document.getElementById("filter");
   filter.innerHTML = ["all", ...CATS].map((c) =>
-    `<button type="button" data-cat="${c}" aria-pressed="${c === cat}">${t(c)}</button>`).join("");
+    `<button type="button" data-cat="${c}" aria-pressed="${c === cat}" title="${t(c)}" aria-label="${t(c)}">${EMOJI[c]}</button>`).join("");
   filter.querySelectorAll("button").forEach((b) => (b.onclick = () => { cat = b.dataset.cat; w ? (location.hash = "#/") : render(); }));
   document.getElementById("view").innerHTML = w && n ? clipView(w, +n) : w ? workView(w) : listView();
   watchCenter();

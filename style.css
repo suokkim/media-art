@@ -148,3 +148,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .zoom .z { height: 100vh; height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; }
 .zoom .z img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .zoom-close { position: fixed; top: 12px; right: 16px; z-index: 51; color: #fff; font-size: .85rem; padding: 6px 10px; background: rgba(0,0,0,.5); }
+
+/* 분류 = 이모지 버튼 — 고른 것만 또렷하게 */
+.filter button { font-size: 1.15rem; letter-spacing: 0; opacity: .35; filter: grayscale(1); transition: opacity .3s, filter .3s; }
+.filter button[aria-pressed="true"] { opacity: 1; filter: none; }
+.subfilter button { font-size: 1rem; }
+.cur { max-width: 1280px; margin: 0 auto 14px; padding: 0 16px; font-weight: 400; color: var(--muted); font-size: .75rem; letter-spacing: .08em; }
