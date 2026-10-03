@@ -1,20 +1,20 @@
 // rgbk — media art. 데이터: data/works.json (글, 손으로 고침) + data/media.json (미디어 목록, 스크립트가 만듦)
 // 주소: #/ = 목록(노션과 같은 분류·순서), #/<slug> = 작품. 언어: ?lang=en 또는 KO/EN 버튼
 const SITE = "https://suokkim.github.io/media-art/";
-const CATS = ["unreal", "tiktok", "realtime"];
+const CATS = ["unreal", "tiktok", "realtime", "drawing"];
 
 const T = {
   ko: {
     sub: "미디어아트", share: "공유", sms: "문자로 보내기", qr: "QR 크게 보기", close: "닫기",
     tapclose: "아무 데나 누르면 닫힙니다", back: "← 목록", prev: "← 이전", next: "다음 →",
     tech: "게임 엔진을 활용한 실시간 재생 비디오", smsBody: "rgbk 미디어아트", lang: "EN",
-    all: "전체", unreal: "도큐멘터리", tiktok: "블랙코미디", realtime: "미디어아트",
+    all: "전체", unreal: "도큐멘터리", tiktok: "블랙코미디", realtime: "미디어아트", drawing: "드로잉북",
   },
   en: {
     sub: "Media art", share: "Share", sms: "Send by text message", qr: "Show QR code", close: "Close",
     tapclose: "Tap anywhere to close", back: "← All works", prev: "← Previous", next: "Next →",
     tech: "Real-time playback video using a game engine", smsBody: "rgbk — media art", lang: "KO",
-    all: "All", unreal: "Documentary", tiktok: "Black comedy", realtime: "Media art",
+    all: "All", unreal: "Documentary", tiktok: "Black comedy", realtime: "Media art", drawing: "Drawing book",
   },
 };
 
@@ -77,7 +77,7 @@ function workView(w) {
   const prev = works[i - 1], next = works[i + 1];
   // 영상이 먼저 보이게 — 첫 영상은 소리 없이 자동 반복, 나머지는 눌러야 받는다
   let firstVideo = true;
-  const items = (media[w.slug] || []).map((m) => {
+  const fig = (m) => {
     let el;
     if (m.type === "video") {
       el = firstVideo
@@ -87,14 +87,20 @@ function workView(w) {
     } else {
       el = `<img src="${m.src}" alt="${esc(L(w.title))}" loading="lazy">`;
     }
-    return `<figure>${el}${m.caption ? `<figcaption>${esc(m.caption)}</figcaption>` : ""}</figure>`;
-  }).join("");
+    return `<figure>${el}${m.caption && !w.tiles ? `<figcaption>${esc(m.caption)}</figcaption>` : ""}</figure>`;
+  };
+  const all = media[w.slug] || [];
+  // groups: 노션 하위 데이터베이스별 묶음 제목 (Digital Painting) — 포트폴리오와 같음
+  const items = w.groups
+    ? w.groups.map((g) => `<h2 class="group-title">${esc(L(g))}</h2><div class="media${w.tiles ? " tiles" : ""}">` +
+        all.filter((m) => m.group === g.key).map(fig).join("") + "</div>").join("")
+    : `<div class="media${w.tiles ? " tiles" : ""}">${all.map(fig).join("")}</div>`;
   // split: 영상마다 따로 페이지 — 작품 페이지는 영상 목록만 (디렉터 10-03, minecraft…)
   const body = w.split
     ? `<div class="grid">${(media[w.slug] || []).map((m, k) => `<a class="card" href="#/${w.slug}/${k + 1}">
         <div class="thumb"><img src="${m.poster || m.src}" alt="${esc(m.caption || "")}" loading="lazy"></div>
         <h2>${esc(m.caption || String(k + 1))}</h2></a>`).join("")}</div>`
-    : `<div class="media">${items}</div>`;
+    : items;
   return `<article class="work">
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(L(w.title))}</h1>
@@ -140,6 +146,22 @@ function render() {
   document.getElementById("view").innerHTML = w && n ? clipView(w, +n) : w ? workView(w) : listView();
   watchCenter();
   document.querySelectorAll("#view .share-btn").forEach((b) => (b.onclick = openQR));
+  // 이미지 누르면 크게 — 같은 페이지 이미지끼리 위아래로 넘김 (드로잉북 때문에, 포트폴리오와 같음)
+  document.querySelectorAll("#view .media img").forEach((img, k, list) => (img.onclick = () => openZoom([...list], k)));
+}
+
+function openZoom(imgs, k) {
+  const z = document.getElementById("zoom");
+  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button>` +
+    imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("");
+  z.hidden = false;
+  document.body.style.overflow = "hidden";
+  z.querySelectorAll(".z")[k].scrollIntoView();
+  z.querySelector(".zoom-close").onclick = closeZoom;
+}
+function closeZoom() {
+  document.getElementById("zoom").hidden = true;
+  document.body.style.overflow = "";
 }
 
 // 휴대폰(마우스 호버 없음): 화면 세로 가운데에 가장 가까운 썸네일 한 줄만 제목이 올라온다 — 포트폴리오와 같음
@@ -171,10 +193,10 @@ function closeQR() {
 document.querySelectorAll("header .share-btn, footer .share-btn").forEach((b) => (b.onclick = openQR));
 document.getElementById("qr-full").onclick = closeQR;
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") { closeQR(); }
+  if (e.key === "Escape") { closeQR(); closeZoom(); }
 });
 document.getElementById("lang").onclick = () => setLang(lang === "ko" ? "en" : "ko");
-window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+window.addEventListener("hashchange", () => { closeZoom(); render(); window.scrollTo(0, 0); });
 
 Promise.all([fetch("data/works.json").then((r) => r.json()), fetch("data/media.json").then((r) => r.json())])
   .then(([w, m]) => { works = w; media = m; render(); });

@@ -202,5 +202,66 @@
    "ko": "국가 폭력에 저항하는 시민들의 모습이다.\n나는 액자 속 그림처럼 보고 있는가?\n\n저 멀리 울려 퍼지는 함성은 강 건너 불구경일 뿐이다.\n그렇게 살고 있는 나를 일깨우고 싶다.",
    "en": "It is the sight of citizens resisting against state violence.\nAm I looking at it as if I am looking at a picture in a frame?\n\nThe distant and spreading screams are just a spectacle across the river.\nI want to awaken myself who is living like that."
   }
+ },
+ {
+  "slug": "drawing-2019",
+  "cat": "drawing",
+  "tiles": true,
+  "year": 2019,
+  "title": {"ko": "SketchBook — 2019", "en": "SketchBook — 2019"},
+  "text": {"ko": "2019년 스케치북.", "en": "Sketchbook, 2019."}
+ },
+ {
+  "slug": "drawing-2015-2018",
+  "cat": "drawing",
+  "tiles": true,
+  "year": "2015–2018",
+  "title": {"ko": "SketchBook — 2015~2018", "en": "SketchBook — 2015–2018"},
+  "text": {"ko": "2015년부터 2018년까지의 스케치북.", "en": "Sketchbooks from 2015 to 2018."}
+ },
+ {
+  "slug": "drawing-2014",
+  "cat": "drawing",
+  "tiles": true,
+  "year": "~2014",
+  "title": {"ko": "SketchBook — ~2014", "en": "SketchBook — up to 2014"},
+  "text": {"ko": "2014년까지의 스케치북.", "en": "Sketchbooks up to 2014."}
+ },
+ {
+  "slug": "drawing-university",
+  "cat": "drawing",
+  "tiles": true,
+  "year": null,
+  "title": {"ko": "SketchBook — 대학교", "en": "SketchBook — University"},
+  "text": {"ko": "대학교 시절 스케치북.", "en": "Sketchbook from university."}
+ },
+ {
+  "slug": "drawing-graduate",
+  "cat": "drawing",
+  "tiles": true,
+  "year": null,
+  "title": {"ko": "SketchBook — 대학원", "en": "SketchBook — Graduate"},
+  "text": {"ko": "대학원 시절 스케치북.", "en": "Sketchbook from graduate school."}
+ },
+ {
+  "slug": "digital-painting",
+  "cat": "drawing",
+  "tiles": true,
+  "year": null,
+  "title": {"ko": "Digital SketchBook — Digital Painting", "en": "Digital SketchBook — Digital Painting"},
+  "text": {"ko": "디지털 페인팅 — Procreate 와 그 이전 작업.", "en": "Digital paintings — in Procreate and before."},
+  "groups": [
+   {"key": "Procreate Gallery", "ko": "Procreate Gallery", "en": "Procreate Gallery"},
+   {"key": "Procreate 2019~", "ko": "Procreate 2019~", "en": "Procreate 2019–"},
+   {"key": "Gallery", "ko": "Gallery", "en": "Gallery"}
+  ]
+ },
+ {
+  "slug": "drawing-3d",
+  "cat": "drawing",
+  "tiles": true,
+  "year": null,
+  "title": {"ko": "Digital SketchBook — 3D", "en": "Digital SketchBook — 3D"},
+  "text": {"ko": "3D 스케치.", "en": "3D sketches."}
  }
 ]
