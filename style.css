@@ -152,3 +152,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* rgbk 분류 — 한 줄 유지 */
 .filter { gap: 14px; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+
+/* 맨 위로 */
+.to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 30; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 1.05rem; line-height: 40px; text-align: center; opacity: .7; transition: opacity .3s; }
+.to-top:hover { opacity: 1; }
+.to-top[hidden] { display: none; }

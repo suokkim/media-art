@@ -201,3 +201,8 @@ window.addEventListener("hashchange", () => { closeZoom(); render(); window.scro
 
 Promise.all([fetch("data/works.json").then((r) => r.json()), fetch("data/media.json").then((r) => r.json())])
   .then(([w, m]) => { works = w; media = m; render(); });
+
+// 맨 위로 — 한 화면 넘게 내려가면 보임 (디렉터 10-03)
+const toTop = document.getElementById("to-top");
+addEventListener("scroll", () => (toTop.hidden = scrollY < innerHeight), { passive: true });
+toTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
