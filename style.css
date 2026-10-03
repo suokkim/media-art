@@ -42,24 +42,34 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   max-width: 1280px; margin: 0 auto;
 }
-.card { display: block; position: relative; }
+.card { display: block; position: relative; overflow: hidden; }
 .card .thumb { aspect-ratio: 4 / 3; background: var(--card); overflow: hidden; }
 .card img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: opacity .3s ease;
+  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1);
 }
-/* 제목·연도는 썸네일 위에 겹쳐 두고 호버(휴대폰은 화면 가운데 .on) 때만 — 포트폴리오와 같음 (디렉터 10-03) */
+/* 제목·연도: 사진은 그대로 두고 아래쪽만 은은한 그림자 + 글자가 차례로 올라옴 (디렉터 10-03 "더 고급스럽게") */
+.card::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,.62) 0%, rgba(0,0,0,.18) 38%, rgba(0,0,0,0) 62%);
+  opacity: 0; transition: opacity .7s cubic-bezier(.2, .7, .2, 1);
+}
 .card h2, .card .meta {
-  position: absolute; left: 14px; right: 14px; margin: 0;
-  opacity: 0; transform: translateY(10px); transition: opacity .35s ease, transform .35s ease; pointer-events: none;
+  position: absolute; left: 16px; right: 16px; margin: 0; z-index: 1; color: #fff;
+  opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity .6s cubic-bezier(.2, .7, .2, 1), transform .8s cubic-bezier(.2, .7, .2, 1);
+  text-shadow: 0 1px 8px rgba(0,0,0,.35);
 }
-.card h2 { bottom: 34px; font-size: .9rem; font-weight: 500; line-height: 1.35; }
-.card .meta { bottom: 14px; color: var(--ink); font-size: .75rem; }
+.card h2 { bottom: 34px; font-size: .92rem; font-weight: 500; line-height: 1.35; letter-spacing: .01em; }
+.card .meta { bottom: 15px; font-size: .72rem; letter-spacing: .08em; color: rgba(255,255,255,.75); transition-delay: .08s; }
+/* 마우스: 호버 / 휴대폰: 화면 가운데 지나는 썸네일(.on, app.js) */
 @media (hover: hover) {
-  .card:hover img { opacity: .2; }
+  .card:hover img { transform: scale(1.04); }
+  .card:hover::after { opacity: 1; }
   .card:hover h2, .card:hover .meta { opacity: 1; transform: none; }
 }
-.card.on img, .card:focus-visible img { opacity: .2; }
+.card.on img, .card:focus-visible img { transform: scale(1.04); }
+.card.on::after, .card:focus-visible::after { opacity: 1; }
 .card.on h2, .card.on .meta, .card:focus-visible h2, .card:focus-visible .meta { opacity: 1; transform: none; }
 
 /* 상세 */
