@@ -76,16 +76,40 @@ function workView(w) {
     }
     return `<figure>${el}${m.caption ? `<figcaption>${esc(m.caption)}</figcaption>` : ""}</figure>`;
   }).join("");
+  // split: 영상마다 따로 페이지 — 작품 페이지는 영상 목록만 (디렉터 10-03, minecraft…)
+  const body = w.split
+    ? `<div class="grid">${(media[w.slug] || []).map((m, k) => `<a class="card" href="#/${w.slug}/${k + 1}">
+        <div class="thumb"><img src="${m.poster || m.src}" alt="${esc(m.caption || "")}" loading="lazy"></div>
+        <h2>${esc(m.caption || String(k + 1))}</h2></a>`).join("")}</div>`
+    : `<div class="media">${items}</div>`;
   return `<article class="work">
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(L(w.title))}</h1>
     <div class="meta" style="color:var(--muted);font-size:.85rem;margin:-8px 0 16px">${[w.year, w.cat].filter(Boolean).join(" · ")}${w.tech ? " · " + t("tech") : ""}</div>
     <p class="statement">${esc(L(w.text))}</p>
     <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
-    <div class="media">${items}</div>
+    ${body}
     <nav class="next">
       <span>${prev ? `<a href="#/${prev.slug}">${t("prev")}</a>` : ""}</span>
       <span>${next ? `<a href="#/${next.slug}">${t("next")}</a>` : ""}</span>
+    </nav>
+  </article>`;
+}
+
+// #/<slug>/<번호> — 영상 하나짜리 페이지
+function clipView(w, n) {
+  const all = media[w.slug] || [], m = all[n - 1];
+  if (!m) return workView(w);
+  const name = m.caption || String(n);
+  document.title = `${name} — ${L(w.title)} — rgbk`;
+  return `<article class="work">
+    <a class="back" href="#/${w.slug}">← ${esc(L(w.title))}</a>
+    <h1>${esc(name)}</h1>
+    <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
+    <div class="media"><figure><video src="${m.src}" poster="${m.poster}" controls playsinline muted autoplay loop preload="metadata"></video></figure></div>
+    <nav class="next">
+      <span>${n > 1 ? `<a href="#/${w.slug}/${n - 1}">${t("prev")}</a>` : ""}</span>
+      <span>${n < all.length ? `<a href="#/${w.slug}/${n + 1}">${t("next")}</a>` : ""}</span>
     </nav>
   </article>`;
 }
@@ -94,16 +118,16 @@ function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
   document.getElementById("lang").textContent = t("lang");
-  const slug = location.hash.replace(/^#\/?/, "");
+  const [slug, n] = location.hash.replace(/^#\/?/, "").split("/");
   const w = works.find((x) => x.slug === slug);
-  document.getElementById("view").innerHTML = w ? workView(w) : listView();
+  document.getElementById("view").innerHTML = w && n ? clipView(w, +n) : w ? workView(w) : listView();
   document.querySelectorAll("#view .share-btn").forEach((b) => (b.onclick = openSheet));
 }
 
 // 공유 — 문자: 지금 보고 있는 페이지 주소 / QR: 사이트 첫 화면 주소
 function openSheet() {
   const url = SITE + (location.hash.length > 2 ? location.hash : "");
-  const w = works.find((x) => x.slug === location.hash.replace(/^#\/?/, ""));
+  const w = works.find((x) => x.slug === location.hash.replace(/^#\/?/, "").split("/")[0]);
   const body = `${w ? L(w.title) + " — " : ""}${t("smsBody")} ${url}`;
   // iOS 는 sms:&body=, 안드로이드는 sms:?body= — 둘 다 받는 꼴
   document.getElementById("sms").href = "sms:?&body=" + encodeURIComponent(body);
