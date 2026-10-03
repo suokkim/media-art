@@ -3,21 +3,21 @@
 const SITE = "https://suokkim.github.io/media-art/";
 const CATS = ["unreal", "tiktok", "realtime", "drawing"];
 // 분류 버튼은 짧은 이름 — 휴대폰에서 한 줄에 들어가게. 아래 묶음 제목은 원래 이름 (디렉터 10-03)
-const SHORT = { ko: { all: "전체", unreal: "다큐", tiktok: "B코미디", realtime: "미디어아트", drawing: "드로잉" },
-  en: { all: "All", unreal: "Docu", tiktok: "B.Comedy", realtime: "Media", drawing: "Drawing" } };
+const SHORT = { ko: { all: "전체", unreal: "다큐", tiktok: "마크", realtime: "미디어아트", drawing: "드로잉" },
+  en: { all: "All", unreal: "Docu", tiktok: "Minecraft", realtime: "Media", drawing: "Drawing" } };
 
 const T = {
   ko: {
     sub: "미디어아트", share: "공유", sms: "문자로 보내기", qr: "QR 크게 보기", close: "닫기",
     tapclose: "아무 데나 누르면 닫힙니다", back: "← 목록", prev: "← 이전", next: "다음 →",
     tech: "게임 엔진을 활용한 실시간 재생 비디오", smsBody: "rgbk 미디어아트", lang: "EN",
-    all: "전체", unreal: "도큐멘터리", tiktok: "블랙코미디", realtime: "미디어아트", drawing: "드로잉북",
+    all: "전체", unreal: "도큐멘터리", tiktok: "마인크래프트", realtime: "미디어아트", drawing: "드로잉북",
   },
   en: {
     sub: "Media art", share: "Share", sms: "Send by text message", qr: "Show QR code", close: "Close",
     tapclose: "Tap anywhere to close", back: "← All works", prev: "← Previous", next: "Next →",
     tech: "Real-time playback video using a game engine", smsBody: "rgbk — media art", lang: "KO",
-    all: "All", unreal: "Documentary", tiktok: "Black comedy", realtime: "Media art", drawing: "Drawing book",
+    all: "All", unreal: "Documentary", tiktok: "Minecraft", realtime: "Media art", drawing: "Drawing book",
   },
 };
 
