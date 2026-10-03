@@ -10,14 +10,14 @@
 <meta property="og:description" content="게임 엔진·실시간 영상 미디어아트 / Media art in game engines and real-time video">
 <meta property="og:url" content="https://suokkim.github.io/media-art/">
 <meta property="og:image" content="https://suokkim.github.io/media-art/media/dot-plane-induction/02.jpg">
-<link rel="stylesheet" href="style.css?v=20261003b">
+<link rel="stylesheet" href="style.css?v=20261003c">
 </head>
 <body>
 <header class="top">
   <a class="name" href="#/">rgbk</a>
   <nav>
     <button class="lang" id="lang" type="button"></button>
-    <button class="share-btn" type="button" data-t="share"></button>
+    <button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button>
   </nav>
 </header>
 
@@ -26,24 +26,16 @@
 <main id="view"></main>
 
 <footer class="bottom">
-  <button class="share-btn" type="button" data-t="share"></button>
+  <button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button>
 </footer>
 
-<!-- 공유: 문자 / QR 크게 (카톡 등 공유창은 쓰지 않는다 — 디렉터 10-03) -->
-<div class="sheet" id="sheet" hidden>
-  <div class="sheet-box" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-    <p id="sheet-title" data-t="share"></p>
-    <a class="act" id="sms" href="#" data-t="sms"></a>
-    <button class="act" id="qr-open" type="button" data-t="qr"></button>
-    <button class="close" id="sheet-close" type="button" data-t="close"></button>
-  </div>
-</div>
+<!-- QR 크게 — 머리·바닥의 QR 아이콘으로 바로 연다 (문자 공유 시트는 뺌 — 디렉터 10-03) -->
 <div class="qr-full" id="qr-full" hidden role="dialog" aria-modal="true" aria-label="QR">
   <img src="qr.svg" alt="QR — suokkim.github.io/media-art">
   <p>suokkim.github.io/media-art</p>
   <p class="hint" data-t="tapclose"></p>
 </div>
 
-<script src="app.js?v=20261003b"></script>
+<script src="app.js?v=20261003c"></script>
 </body>
 </html>

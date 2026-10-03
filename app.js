@@ -100,7 +100,7 @@ function workView(w) {
     <h1>${esc(L(w.title))}</h1>
     <div class="meta" style="color:var(--muted);font-size:.85rem;margin:-8px 0 16px">${[w.year, t(w.cat)].filter(Boolean).join(" · ")}${w.tech ? " · " + t("tech") : ""}</div>
     <p class="statement">${esc(L(w.text))}</p>
-    <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
+    <div class="work-share"><button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button></div>
     ${body}
     <nav class="next">
       <span>${prev ? `<a href="#/${prev.slug}">${t("prev")}</a>` : ""}</span>
@@ -118,7 +118,7 @@ function clipView(w, n) {
   return `<article class="work">
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(name)}</h1>
-    <div class="work-share"><button class="share-btn" type="button">${t("share")}</button></div>
+    <div class="work-share"><button class="share-btn" type="button" aria-label="QR"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></button></div>
     <div class="media"><figure><video src="${m.src}" poster="${m.poster}" controls playsinline muted autoplay loop preload="metadata"></video></figure></div>
     <nav class="next">
       <span>${n > 1 ? `<a href="#/${w.slug}/${n - 1}">${t("prev")}</a>` : ""}</span>
@@ -139,7 +139,7 @@ function render() {
   filter.querySelectorAll("button").forEach((b) => (b.onclick = () => { cat = b.dataset.cat; w ? (location.hash = "#/") : render(); }));
   document.getElementById("view").innerHTML = w && n ? clipView(w, +n) : w ? workView(w) : listView();
   watchCenter();
-  document.querySelectorAll("#view .share-btn").forEach((b) => (b.onclick = openSheet));
+  document.querySelectorAll("#view .share-btn").forEach((b) => (b.onclick = openQR));
 }
 
 // 휴대폰(마우스 호버 없음): 화면 세로 가운데에 가장 가까운 썸네일 한 줄만 제목이 올라온다 — 포트폴리오와 같음
@@ -156,24 +156,22 @@ function watchCenter() {
 addEventListener("scroll", watchCenter, { passive: true });
 addEventListener("resize", watchCenter);
 
-// 공유 — 문자: 지금 보고 있는 페이지 주소 / QR: 사이트 첫 화면 주소
-function openSheet() {
-  const url = SITE + (location.hash.length > 2 ? location.hash : "");
-  const w = works.find((x) => x.slug === location.hash.replace(/^#\/?/, "").split("/")[0]);
-  const body = `${w ? L(w.title) + " — " : ""}${t("smsBody")} ${url}`;
-  // iOS 는 sms:&body=, 안드로이드는 sms:?body= — 둘 다 받는 꼴
-  document.getElementById("sms").href = "sms:?&body=" + encodeURIComponent(body);
-  document.getElementById("sheet").hidden = false;
+// QR — 공유 버튼 대신 QR 아이콘, 누르면 바로 QR 만 화면 가득 (디렉터 10-03)
+// 화면 밝기는 웹에서 바꿀 수 없다(브라우저에 그런 기능이 없음) — 대신 흰 화면 + 켜져 있는 동안 화면이 어두워지거나 꺼지지 않게
+let wake = null;
+async function openQR() {
+  document.getElementById("qr-full").hidden = false;
+  try { wake = await navigator.wakeLock?.request("screen"); } catch (e) {}
 }
-function closeSheet() { document.getElementById("sheet").hidden = true; }
+function closeQR() {
+  document.getElementById("qr-full").hidden = true;
+  if (wake) { wake.release().catch(() => {}); wake = null; }
+}
 
-document.querySelectorAll("header .share-btn, footer .share-btn").forEach((b) => (b.onclick = openSheet));
-document.getElementById("sheet-close").onclick = closeSheet;
-document.getElementById("sheet").onclick = (e) => { if (e.target.id === "sheet") closeSheet(); };
-document.getElementById("qr-open").onclick = () => { closeSheet(); document.getElementById("qr-full").hidden = false; };
-document.getElementById("qr-full").onclick = () => (document.getElementById("qr-full").hidden = true);
+document.querySelectorAll("header .share-btn, footer .share-btn").forEach((b) => (b.onclick = openQR));
+document.getElementById("qr-full").onclick = closeQR;
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") { closeSheet(); document.getElementById("qr-full").hidden = true; }
+  if (e.key === "Escape") { closeQR(); }
 });
 document.getElementById("lang").onclick = () => setLang(lang === "ko" ? "en" : "ko");
 window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
