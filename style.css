@@ -23,7 +23,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* 머리 — 영문 이름만 */
 .top {
   display: flex; align-items: center; gap: 18px;
-  padding: 36px 16px 28px; max-width: 1280px; margin: 0 auto;
+  padding: 36px 16px 14px; max-width: 1280px; margin: 0 auto;
 }
 .name { font-size: 1.05rem; font-weight: 500; letter-spacing: .04em; }
 .top nav { margin-left: auto; display: flex; gap: 18px; }
