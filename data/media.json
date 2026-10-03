@@ -1,0 +1,688 @@
+{
+ "bogwang-1": [
+  {
+   "type": "image",
+   "src": "media/bogwang-1/01.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-1/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-1/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-1/04.jpg"
+  },
+  {
+   "type": "video",
+   "src": "media/bogwang-1/05.mp4",
+   "poster": "media/bogwang-1/05-poster.jpg"
+  }
+ ],
+ "bogwang-2": [
+  {
+   "type": "image",
+   "src": "media/bogwang-2/01.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-2/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-2/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/bogwang-2/04.jpg"
+  },
+  {
+   "type": "video",
+   "src": "media/bogwang-2/05.mp4",
+   "poster": "media/bogwang-2/05-poster.jpg"
+  }
+ ],
+ "minecraft": [
+  {
+   "type": "video",
+   "src": "media/minecraft/01.mp4",
+   "poster": "media/minecraft/01-poster.jpg",
+   "caption": "소녀상-독일"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/02.mp4",
+   "poster": "media/minecraft/02-poster.jpg",
+   "caption": "독도"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/03.mp4",
+   "poster": "media/minecraft/03-poster.jpg",
+   "caption": "이름 없어"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/04.mp4",
+   "poster": "media/minecraft/04-poster.jpg",
+   "caption": "마트 물가"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/05.mp4",
+   "poster": "media/minecraft/05-poster.jpg",
+   "caption": "세월호10주기"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/06.mp4",
+   "poster": "media/minecraft/06-poster.jpg",
+   "caption": "동상"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/07.mp4",
+   "poster": "media/minecraft/07-poster.jpg",
+   "caption": "박수?"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/08.mp4",
+   "poster": "media/minecraft/08-poster.jpg",
+   "caption": "반려대파"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/09.mp4",
+   "poster": "media/minecraft/09-poster.jpg",
+   "caption": "대파 대전"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/10.mp4",
+   "poster": "media/minecraft/10-poster.jpg",
+   "caption": "입틀막2"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/11.mp4",
+   "poster": "media/minecraft/11-poster.jpg",
+   "caption": "입틀막1"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/12.mp4",
+   "poster": "media/minecraft/12-poster.jpg",
+   "caption": "서천시장 화재"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/13.mp4",
+   "poster": "media/minecraft/13-poster.jpg",
+   "caption": "디올백"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/14.mp4",
+   "poster": "media/minecraft/14-poster.jpg",
+   "caption": "다우닝가 10번지"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/15.mp4",
+   "poster": "media/minecraft/15-poster.jpg",
+   "caption": "부산 엑스포"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/16.mp4",
+   "poster": "media/minecraft/16-poster.jpg",
+   "caption": "마약과의 전쟁"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/17.mp4",
+   "poster": "media/minecraft/17-poster.jpg",
+   "caption": "수사 종결"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/18.mp4",
+   "poster": "media/minecraft/18-poster.jpg",
+   "caption": "서울 구치소"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/19.mp4",
+   "poster": "media/minecraft/19-poster.jpg",
+   "caption": "선거 공약"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/20.mp4",
+   "poster": "media/minecraft/20-poster.jpg",
+   "caption": "대지의 눈"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/21.mp4",
+   "poster": "media/minecraft/21-poster.jpg",
+   "caption": "홍범도 장군"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/22.mp4",
+   "poster": "media/minecraft/22-poster.jpg",
+   "caption": "급식"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/23.mp4",
+   "poster": "media/minecraft/23-poster.jpg",
+   "caption": "해병대 꼬리자르기"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/24.mp4",
+   "poster": "media/minecraft/24-poster.jpg",
+   "caption": "서이초 교사"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/25.mp4",
+   "poster": "media/minecraft/25-poster.jpg",
+   "caption": "오송지하차도 침수"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/26.mp4",
+   "poster": "media/minecraft/26-poster.jpg",
+   "caption": "공천수"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/27.mp4",
+   "poster": "media/minecraft/27-poster.jpg",
+   "caption": "핵 오염수"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/28.mp4",
+   "poster": "media/minecraft/28-poster.jpg",
+   "caption": "이태원"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/29.mp4",
+   "poster": "media/minecraft/29-poster.jpg",
+   "caption": "아파트"
+  },
+  {
+   "type": "video",
+   "src": "media/minecraft/30.mp4",
+   "poster": "media/minecraft/30-poster.jpg",
+   "caption": "반지하 침수"
+  }
+ ],
+ "dot-plane-0": [
+  {
+   "type": "video",
+   "src": "media/dot-plane-0/01.mp4",
+   "poster": "media/dot-plane-0/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-0/02.jpg"
+  }
+ ],
+ "dot-line-0": [
+  {
+   "type": "video",
+   "src": "media/dot-line-0/01.mp4",
+   "poster": "media/dot-line-0/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-0/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-0/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-0/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-0/05.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-0/06.jpg"
+  }
+ ],
+ "dot-dot-seesaw": [
+  {
+   "type": "video",
+   "src": "media/dot-dot-seesaw/01.mp4",
+   "poster": "media/dot-dot-seesaw/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-dot-seesaw/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-dot-seesaw/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-dot-seesaw/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-dot-seesaw/05.jpg"
+  }
+ ],
+ "dot-line-apartment": [
+  {
+   "type": "video",
+   "src": "media/dot-line-apartment/01.mp4",
+   "poster": "media/dot-line-apartment/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-apartment/02.jpg"
+  }
+ ],
+ "dot-line-stock": [
+  {
+   "type": "video",
+   "src": "media/dot-line-stock/01.mp4",
+   "poster": "media/dot-line-stock/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-stock/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-stock/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-stock/04.jpg"
+  }
+ ],
+ "dot-line-loan": [
+  {
+   "type": "video",
+   "src": "media/dot-line-loan/01.mp4",
+   "poster": "media/dot-line-loan/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/02.jpg"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-line-loan/03.mp4",
+   "poster": "media/dot-line-loan/03-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/05.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/06.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/07.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/08.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/09.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/10.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/11.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/12.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-line-loan/13.jpg"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-line-loan/14.mp4",
+   "poster": "media/dot-line-loan/14-poster.jpg"
+  }
+ ],
+ "plane-frame": [
+  {
+   "type": "video",
+   "src": "media/plane-frame/01.mp4",
+   "poster": "media/plane-frame/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/plane-frame/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/plane-frame/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/plane-frame/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/plane-frame/05.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/plane-frame/06.jpg"
+  }
+ ],
+ "dot-plane-induction": [
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/01.mp4",
+   "poster": "media/dot-plane-induction/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/04.jpg"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/05.mp4",
+   "poster": "media/dot-plane-induction/05-poster.jpg",
+   "caption": "The Other Face"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/06.mp4",
+   "poster": "media/dot-plane-induction/06-poster.jpg",
+   "caption": "The Other Face"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/07.mp4",
+   "poster": "media/dot-plane-induction/07-poster.jpg",
+   "caption": "The Other Face"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/08.mp4",
+   "poster": "media/dot-plane-induction/08-poster.jpg",
+   "caption": "The Other Face"
+  },
+  {
+   "type": "video",
+   "src": "media/dot-plane-induction/09.mp4",
+   "poster": "media/dot-plane-induction/09-poster.jpg",
+   "caption": "The Other Face"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/10.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/11.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/12.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/13.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/14.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/15.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/16.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/17.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/18.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/19.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/20.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/21.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/22.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/23.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/24.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/25.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/26.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/27.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/28.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/dot-plane-induction/29.jpg"
+  }
+ ],
+ "percent-skull": [
+  {
+   "type": "video",
+   "src": "media/percent-skull/01.mp4",
+   "poster": "media/percent-skull/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/percent-skull/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/percent-skull/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/percent-skull/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/percent-skull/05.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/percent-skull/06.jpg"
+  }
+ ],
+ "mass-games": [
+  {
+   "type": "image",
+   "src": "media/mass-games/01.jpg",
+   "caption": "Mass Games #12"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/02.mp4",
+   "poster": "media/mass-games/02-poster.jpg",
+   "caption": "Mass Games #12"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/03.jpg",
+   "caption": "Mass Games #9"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/04.mp4",
+   "poster": "media/mass-games/04-poster.jpg",
+   "caption": "Mass Games #9"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/05.jpg",
+   "caption": "Mass Games #4"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/06.mp4",
+   "poster": "media/mass-games/06-poster.jpg",
+   "caption": "Mass Games #4"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/07.jpg",
+   "caption": "Mass Games #3"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/08.mp4",
+   "poster": "media/mass-games/08-poster.jpg",
+   "caption": "Mass Games #3"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/09.jpg",
+   "caption": "Mass Games #2"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/10.mp4",
+   "poster": "media/mass-games/10-poster.jpg",
+   "caption": "Mass Games #2"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/11.jpg",
+   "caption": "Mass Games #1"
+  },
+  {
+   "type": "video",
+   "src": "media/mass-games/12.mp4",
+   "poster": "media/mass-games/12-poster.jpg",
+   "caption": "Mass Games #1"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/13.jpg",
+   "caption": "Mass Games #1"
+  },
+  {
+   "type": "image",
+   "src": "media/mass-games/14.jpg",
+   "caption": "Mass Games #1"
+  }
+ ],
+ "seoul-apartment": [
+  {
+   "type": "image",
+   "src": "media/seoul-apartment/01.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/seoul-apartment/02.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/seoul-apartment/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/seoul-apartment/04.jpg"
+  }
+ ],
+ "pop-pop": [
+  {
+   "type": "video",
+   "src": "media/pop-pop/01.mp4",
+   "poster": "media/pop-pop/01-poster.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/pop-pop/02.gif"
+  },
+  {
+   "type": "image",
+   "src": "media/pop-pop/03.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/pop-pop/04.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/pop-pop/05.jpg"
+  },
+  {
+   "type": "image",
+   "src": "media/pop-pop/06.jpg"
+  }
+ ]
+}
