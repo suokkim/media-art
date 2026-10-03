@@ -1,109 +1,205 @@
 [
-  {
-    "slug": "bogwang-1", "cat": "unreal", "year": 2024,
-    "title": {"ko": "보광동 다큐멘터리 파트1", "en": "Bogwang-dong Documentary, Part 1"},
-    "text": {
-      "ko": "재개발로 인해 보광동 일대 주민들이 이주했다.\n떠나간 자리 너머, 남겨진 것들을 그려본다.",
-      "en": "Residents around Bogwang-dong have relocated due to redevelopment.\nI envision the things left behind beyond the places they've departed."
-    }
+ {
+  "slug": "bogwang-1",
+  "cat": "unreal",
+  "year": 2024,
+  "title": {
+   "ko": "보광동 다큐멘터리 파트1",
+   "en": "Bogwang-dong Documentary, Part 1"
   },
-  {
-    "slug": "bogwang-2", "cat": "unreal", "year": null,
-    "title": {"ko": "보광동 다큐멘터리 파트2", "en": "Bogwang-dong Documentary, Part 2"},
-    "text": {
-      "ko": "재개발로 인해 보광동 일대 주민들이 이주했다.\n떠나간 사람들과 빈 자리를 메워 갈 사람들을 그려 본다.",
-      "en": "Residents around Bogwang-dong have relocated due to redevelopment.\nI picture those who left, and those who will fill the empty places."
-    }
-  },
-  {
-    "slug": "minecraft", "cat": "tiktok", "year": null,
-    "title": {"ko": "minecraft…", "en": "minecraft…"},
-    "text": {
-      "ko": "마인크래프트로 만든 짧은 영상 연작. 뉴스가 된 장면들 — 소녀상, 독도, 세월호 10주기, 마트 물가, 대파, 서천시장 화재, 부산 엑스포.",
-      "en": "A series of short videos made in Minecraft, restaging scenes from the news — the Statue of Peace, Dokdo, the 10th anniversary of the Sewol ferry, grocery prices, green onions, the Seocheon market fire, the Busan Expo bid."
-    }
-  },
-  {
-    "slug": "dot-plane-0", "cat": "realtime", "year": 2021,
-    "title": {"ko": "점, 면 = 0", "en": "Dot, Plane = 0"},
-    "text": {"ko": "“0”에 갇힌 점", "en": "A dot trapped in “0”."},
-    "tech": true
-  },
-  {
-    "slug": "dot-line-0", "cat": "realtime", "year": 2021,
-    "title": {"ko": "점, 선 = 0", "en": "Dot, Line = 0"},
-    "text": {"ko": "쳇바퀴", "en": "A hamster wheel."},
-    "tech": true
-  },
-  {
-    "slug": "dot-dot-seesaw", "cat": "realtime", "year": 2022,
-    "title": {"ko": "점, 점 = 시소", "en": "Dot, Dot = Seesaw"},
-    "text": {"ko": "점과 점의 저울질", "en": "Dots weighed against each other."},
-    "tech": true
-  },
-  {
-    "slug": "dot-line-apartment", "cat": "realtime", "year": 2022,
-    "title": {"ko": "점, 선 = 아파트", "en": "Dot, Line = Apartment"},
-    "text": {"ko": "아파트가 사람을 만든다.", "en": "Apartments make people."},
-    "tech": true
-  },
-  {
-    "slug": "dot-line-stock", "cat": "realtime", "year": 2022,
-    "title": {"ko": "점, 선 = 주식", "en": "Dot, Line = Stocks"},
-    "text": {"ko": "위는 행복, 아래는 불행.", "en": "Up is happiness, down is misery."},
-    "tech": true
-  },
-  {
-    "slug": "dot-line-loan", "cat": "realtime", "year": 2022,
-    "title": {"ko": "점, 선 = 대출", "en": "Dot, Line = Loan"},
-    "text": {"ko": "대출이 삶을 만든다.", "en": "Loans make a life."},
-    "tech": true
-  },
-  {
-    "slug": "plane-frame", "cat": "realtime", "year": 2022,
-    "title": {"ko": "면 = 프레임", "en": "Plane = Frame"},
-    "text": {"ko": "신문 레이아웃을 상징", "en": "A stand-in for the newspaper layout."},
-    "tech": true
-  },
-  {
-    "slug": "dot-plane-induction", "cat": "realtime", "year": 2022,
-    "title": {"ko": "점, 면 = 유도", "en": "Dot, Plane = Steering"},
-    "text": {
-      "ko": "여론 유도에 맞서는 점.\n움직이는 큰 형태( “ㅈ”, “ㅗ”, “ㅅ”, “ㅓ”, “ㄴ” )는 5개의 분리된(신문 레이아웃) 공간을 지나간다.\n프레임에 갇힌 점은 떠밀리고 파괴됨을 반복한다.",
-      "en": "A dot standing against the steering of public opinion.\nLarge moving forms (the Korean letters ㅈ, ㅗ, ㅅ, ㅓ, ㄴ) pass through five separate spaces laid out like a newspaper.\nDots trapped in the frames are pushed and destroyed, again and again."
-    },
-    "tech": true
-  },
-  {
-    "slug": "percent-skull", "cat": "realtime", "year": null,
-    "title": {"ko": "% = 💀", "en": "% = 💀"},
-    "text": {
-      "ko": "우리는 금융의 노예로 살아간다.\n\n% 대출 % 신용 % 정기 % 예금\n% 대출 % 최고 % 우대 % 청약\n% 대출 % 최저 % 금리 % 전세\n% 대출 % 이자 % 생계 % 자금\n% 대출 % 주택 % 월세 % 지원",
-      "en": "We live as slaves to finance.\n\n% Loan % Credit % Regular % Deposit\n% Loan % Maximum % Preferential % Subscription\n% Loan % Minimum % Interest Rate % Jeonse\n% Loan % Interest % Livelihood % Capital\n% Loan % Housing % Monthly Rent % Support"
-    }
-  },
-  {
-    "slug": "mass-games", "cat": "realtime", "year": null,
-    "title": {"ko": "매스게임", "en": "Mass Games"},
-    "text": {
-      "ko": "갈 곳 잃은 욕망이 한곳으로 모인다.\n미디어가 만든 물감으로 욕망을 색칠한다.\n\n실시간 엔진(Unity 3D) 캡처 영상",
-      "en": "Desires, lost in direction, converge into one place.\nThey are colored by the paint created by the media.\n\nRealtime engine (Unity 3D) capture movie"
-    }
-  },
-  {
-    "slug": "seoul-apartment", "cat": "realtime", "year": null,
-    "title": {"ko": "서울아파트", "en": "Seoul Apartment"},
-    "text": {
-      "ko": "나는 서울 아파트에 살고 있습니다.\n\n서울 아파트 12동 4호\n서울 아파트 5동 10호\n서울 아파트 16동 7호\n서울 아파트 8동 5호",
-      "en": "I live in an apartment called “Seoul Apartment”.\n\n12-4, Seoul APT\n5-10, Seoul APT\n16-7, Seoul APT\n8-5, Seoul APT"
-    }
-  },
-  {
-    "slug": "pop-pop", "cat": "realtime", "year": null,
-    "title": {"ko": "Pop! Pop!", "en": "Pop! Pop!"},
-    "text": {
-      "ko": "국가 폭력에 저항하는 시민들의 모습이다.\n나는 액자 속 그림처럼 보고 있는가?\n\n저 멀리 울려 퍼지는 함성은 강 건너 불구경일 뿐이다.\n그렇게 살고 있는 나를 일깨우고 싶다.",
-      "en": "It is the sight of citizens resisting against state violence.\nAm I looking at it as if I am looking at a picture in a frame?\n\nThe distant and spreading screams are just a spectacle across the river.\nI want to awaken myself who is living like that."
-    }
+  "text": {
+   "ko": "재개발로 인해 보광동 일대 주민들이 이주했다.\n떠나간 자리 너머, 남겨진 것들을 그려본다.",
+   "en": "Residents around Bogwang-dong have relocated due to redevelopment.\nI envision the things left behind beyond the places they've departed."
   }
+ },
+ {
+  "slug": "bogwang-2",
+  "cat": "unreal",
+  "year": null,
+  "title": {
+   "ko": "보광동 다큐멘터리 파트2",
+   "en": "Bogwang-dong Documentary, Part 2"
+  },
+  "text": {
+   "ko": "재개발로 인해 보광동 일대 주민들이 이주했다.\n떠나간 사람들과 빈 자리를 메워 갈 사람들을 그려 본다.",
+   "en": "Residents around Bogwang-dong have relocated due to redevelopment.\nI picture those who left, and those who will fill the empty places."
+  }
+ },
+ {
+  "slug": "minecraft",
+  "cat": "tiktok",
+  "year": null,
+  "title": {
+   "ko": "minecraft…",
+   "en": "minecraft…"
+  },
+  "text": {
+   "ko": "마인크래프트로 만든 짧은 영상 연작. 뉴스가 된 장면들 — 소녀상, 독도, 세월호 10주기, 마트 물가, 대파, 서천시장 화재, 부산 엑스포.",
+   "en": "A series of short videos made in Minecraft, restaging scenes from the news — the Statue of Peace, Dokdo, the 10th anniversary of the Sewol ferry, grocery prices, green onions, the Seocheon market fire, the Busan Expo bid."
+  }
+ },
+ {
+  "slug": "dot-plane-0",
+  "cat": "realtime",
+  "year": 2021,
+  "title": {
+   "ko": "점, 면 = 0",
+   "en": "Dot, Plane = 0"
+  },
+  "text": {
+   "ko": "“0”에 갇힌 점",
+   "en": "A dot trapped in “0”."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-line-0",
+  "cat": "realtime",
+  "year": 2021,
+  "title": {
+   "ko": "점, 선 = 0",
+   "en": "Dot, Line = 0"
+  },
+  "text": {
+   "ko": "쳇바퀴",
+   "en": "A hamster wheel."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-dot-seesaw",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "점, 점 = 시소",
+   "en": "Dot, Dot = Seesaw"
+  },
+  "text": {
+   "ko": "점과 점의 저울질",
+   "en": "Dots weighed against each other."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-line-apartment",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "점, 선 = 아파트",
+   "en": "Dot, Line = Apartment"
+  },
+  "text": {
+   "ko": "아파트가 사람을 만든다.",
+   "en": "Apartments make people."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-line-stock",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "점, 선 = 주식",
+   "en": "Dot, Line = Stocks"
+  },
+  "text": {
+   "ko": "위는 행복, 아래는 불행.",
+   "en": "Up is happiness, down is misery."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-line-loan",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "점, 선 = 대출",
+   "en": "Dot, Line = Loan"
+  },
+  "text": {
+   "ko": "대출이 삶을 만든다.",
+   "en": "Loans make a life."
+  },
+  "tech": true
+ },
+ {
+  "slug": "plane-frame",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "면 = 프레임",
+   "en": "Plane = Frame"
+  },
+  "text": {
+   "ko": "신문 레이아웃을 상징",
+   "en": "A stand-in for the newspaper layout."
+  },
+  "tech": true
+ },
+ {
+  "slug": "dot-plane-induction",
+  "cat": "realtime",
+  "year": 2022,
+  "title": {
+   "ko": "점, 면 = 유도",
+   "en": "Dot, Plane = Steering"
+  },
+  "text": {
+   "ko": "여론 유도에 맞서는 점.\n움직이는 큰 형태( “ㅈ”, “ㅗ”, “ㅅ”, “ㅓ”, “ㄴ” )는 5개의 분리된(신문 레이아웃) 공간을 지나간다.\n프레임에 갇힌 점은 떠밀리고 파괴됨을 반복한다.",
+   "en": "A dot standing against the steering of public opinion.\nLarge moving forms (the Korean letters ㅈ, ㅗ, ㅅ, ㅓ, ㄴ) pass through five separate spaces laid out like a newspaper.\nDots trapped in the frames are pushed and destroyed, again and again."
+  },
+  "tech": true
+ },
+ {
+  "slug": "percent-skull",
+  "cat": "realtime",
+  "year": 2020,
+  "title": {
+   "ko": "% = 💀",
+   "en": "% = 💀"
+  },
+  "text": {
+   "ko": "우리는 금융의 노예로 살아간다.\n\n% 대출 % 신용 % 정기 % 예금\n% 대출 % 최고 % 우대 % 청약\n% 대출 % 최저 % 금리 % 전세\n% 대출 % 이자 % 생계 % 자금\n% 대출 % 주택 % 월세 % 지원",
+   "en": "We live as slaves to finance.\n\n% Loan % Credit % Regular % Deposit\n% Loan % Maximum % Preferential % Subscription\n% Loan % Minimum % Interest Rate % Jeonse\n% Loan % Interest % Livelihood % Capital\n% Loan % Housing % Monthly Rent % Support"
+  }
+ },
+ {
+  "slug": "mass-games",
+  "cat": "realtime",
+  "year": "2019–2020",
+  "title": {
+   "ko": "매스게임",
+   "en": "Mass Games"
+  },
+  "text": {
+   "ko": "갈 곳 잃은 욕망이 한곳으로 모인다.\n미디어가 만든 물감으로 욕망을 색칠한다.\n\n실시간 엔진(Unity 3D) 캡처 영상",
+   "en": "Desires, lost in direction, converge into one place.\nThey are colored by the paint created by the media.\n\nRealtime engine (Unity 3D) capture movie"
+  }
+ },
+ {
+  "slug": "seoul-apartment",
+  "cat": "realtime",
+  "year": 2020,
+  "title": {
+   "ko": "서울아파트",
+   "en": "Seoul Apartment"
+  },
+  "text": {
+   "ko": "나는 서울 아파트에 살고 있습니다.\n\n서울 아파트 12동 4호\n서울 아파트 5동 10호\n서울 아파트 16동 7호\n서울 아파트 8동 5호",
+   "en": "I live in an apartment called “Seoul Apartment”.\n\n12-4, Seoul APT\n5-10, Seoul APT\n16-7, Seoul APT\n8-5, Seoul APT"
+  }
+ },
+ {
+  "slug": "pop-pop",
+  "cat": "realtime",
+  "year": 2019,
+  "title": {
+   "ko": "Pop! Pop!",
+   "en": "Pop! Pop!"
+  },
+  "text": {
+   "ko": "국가 폭력에 저항하는 시민들의 모습이다.\n나는 액자 속 그림처럼 보고 있는가?\n\n저 멀리 울려 퍼지는 함성은 강 건너 불구경일 뿐이다.\n그렇게 살고 있는 나를 일깨우고 싶다.",
+   "en": "It is the sight of citizens resisting against state violence.\nAm I looking at it as if I am looking at a picture in a frame?\n\nThe distant and spreading screams are just a spectacle across the river.\nI want to awaken myself who is living like that."
+  }
+ }
 ]
