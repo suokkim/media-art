@@ -153,11 +153,14 @@ function render() {
 
 function openZoom(imgs, k) {
   const z = document.getElementById("zoom");
-  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button>` +
+  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button><div class="zoom-count"></div>` +
     imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("");
   z.hidden = false;
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
+  // 몇 번째 장인지 아래에 (디렉터 10-04)
+  const cnt = z.querySelector(".zoom-count");
+  (z.onscroll = () => (cnt.textContent = `${Math.round(z.scrollTop / z.clientHeight) + 1} / ${imgs.length}`))();
   z.querySelector(".zoom-close").onclick = closeZoom;
 }
 function closeZoom() {
