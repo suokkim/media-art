@@ -147,8 +147,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .zoom[hidden] { display: none; }
 .zoom-nav { position: fixed; left: 0; right: 0; bottom: 16px; z-index: 51; display: flex; justify-content: center; align-items: center; gap: 7px; transition: opacity .2s; }
 .zoom.pinched .zoom-nav { opacity: 0; pointer-events: none; }
-.zoom-nav.dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.35); cursor: pointer; transition: background .2s, transform .2s; }
-.zoom-nav.dots i.on { background: #fff; transform: scale(1.3); }
 .zoom-nav.thumbs { justify-content: flex-start; gap: 3px; overflow-x: auto; padding: 4px calc(50% - 11px); scrollbar-width: none; touch-action: pan-x; overscroll-behavior: contain; cursor: grab; }
 .zoom-nav.thumbs::-webkit-scrollbar { display: none; }
 .zoom-nav.thumbs img { flex: none; width: 22px; height: 22px; object-fit: cover; border-radius: 2px; opacity: .4; transition: opacity .2s, transform .2s; user-select: none; }

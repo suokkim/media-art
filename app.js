@@ -155,12 +155,11 @@ function render() {
 
 function openZoom(imgs, k) {
   const z = document.getElementById("zoom");
-  // 아래 장수 표시: 몇 장 안 되면 점, 많으면 작은 썸네일 줄 — 끌면 그 장으로 바로바로 (디렉터 10-05)
-  const few = imgs.length <= 7;
+  // 아래 장수 표시: 장 수와 상관없이 작은 썸네일 줄 — 끌면 그 장으로 바로바로 (디렉터 10-05)
   z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button>` +
     imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("") +
-    (imgs.length > 1 ? `<div class="zoom-nav ${few ? "dots" : "thumbs"}">${imgs.map((i) =>
-      few ? "<i></i>" : `<img src="${i.src}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : "");
+    (imgs.length > 1 ? `<div class="zoom-nav thumbs">${imgs.map((i) =>
+      `<img src="${i.src}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : "");
   z.hidden = false;
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
@@ -185,12 +184,11 @@ function openZoom(imgs, k) {
     if (i === cur || !marks[i]) return;
     cur = i;
     marks.forEach((m, j) => m.classList.toggle("on", j === i));
-    if (!few && !dragging) nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;
+    if (!dragging) nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;
   };
   z.onscroll = () => show(Math.round(z.scrollTop / z.clientHeight));
   show(k);
   marks.forEach((m, j) => (m.onclick = () => (z.scrollTop = j * z.clientHeight)));
-  if (few) return;
   // 썸네일 줄을 끄는 동안 가운데 온 썸네일의 장을 바로 보여준다
   nav.onscroll = () => {
     if (!dragging) return;
