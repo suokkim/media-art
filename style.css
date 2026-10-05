@@ -175,3 +175,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .zoom .z.big { display: block; overflow: auto; overscroll-behavior: contain; padding-bottom: 0; }
 .zoom .z.big img { max-width: none; max-height: none; margin: 0 auto; display: block; cursor: zoom-out; }
+/* 마인크래프트 영상 아래 장면 나열 — 세로 영상이라 좁은 칸 (디렉터 10-05) */
+.media.story { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 4px; margin-top: 4px; }
+.media.story img { width: 100%; height: auto; display: block; }

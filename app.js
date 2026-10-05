@@ -117,7 +117,7 @@ function workView(w) {
   </article>`;
 }
 
-// #/<slug>/<번호> — 영상 하나짜리 페이지
+// #/<slug>/<번호> — 영상 하나짜리 페이지, 아래에 장면 나열(시네마틱 뷰, 디렉터 10-05)
 function clipView(w, n) {
   const all = media[w.slug] || [], m = all[n - 1];
   if (!m) return workView(w);
@@ -127,6 +127,8 @@ function clipView(w, n) {
     <a class="back" href="#/">${t("back")}</a>
     <h1>${esc(name)}</h1>
     <div class="media"><figure><video src="${m.src}" poster="${m.poster}" controls playsinline muted autoplay loop preload="metadata"></video></figure></div>
+    ${w.storyboards?.[n - 1] ? `<div class="media story">${Array.from({ length: w.storyboards[n - 1] }, (_, k) =>
+      `<img src="media/${w.slug}/story/${String(n).padStart(2, "0")}/${String(k + 1).padStart(2, "0")}.jpg" alt="${esc(name)} ${k + 1}" loading="lazy">`).join("")}</div>` : ""}
     <nav class="next">
       <span>${n > 1 ? `<a href="#/${w.slug}/${n - 1}">${t("prev")}</a>` : ""}</span>
       <span>${n < all.length ? `<a href="#/${w.slug}/${n + 1}">${t("next")}</a>` : ""}</span>
