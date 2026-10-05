@@ -235,7 +235,7 @@ function closeZoom() {
 
 // 휴대폰(마우스 호버 없음): 화면 세로 가운데에 가장 가까운 썸네일 한 줄만 제목이 올라온다 — 포트폴리오와 같음
 function watchCenter() {
-  if (matchMedia("(hover: hover)").matches) return;
+  if (matchMedia("(hover: hover)").matches || document.body.classList.contains("compact")) return;   // 모아보기에선 끔 (디렉터 10-06)
   const mid = innerHeight / 2;
   let best = null, d = Infinity;
   document.querySelectorAll("#view .card").forEach((c) => {
@@ -279,6 +279,8 @@ toTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 const gridBtn = document.getElementById("grid-btn");
 const setCompact = (on) => {
   document.body.classList.toggle("compact", on);
+  document.querySelectorAll("#view .card.on").forEach((c) => c.classList.remove("on"));
+  if (!on) watchCenter();
   gridBtn.setAttribute("aria-pressed", on);
   try { localStorage.setItem("compact", on ? "1" : ""); } catch (e) {}
 };

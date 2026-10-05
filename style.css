@@ -185,3 +185,4 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 body.compact #view .grid { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 2px; }
 body.compact #view .card .thumb { aspect-ratio: 1; }
 body.compact #view .card::after, body.compact #view .card h2, body.compact #view .card .meta { display: none; }
+body.compact #view .card img { transform: none !important; }   /* 모아보기에선 가운데·호버 확대 끔 — 울렁임 (디렉터 10-06) */
