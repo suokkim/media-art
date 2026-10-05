@@ -179,36 +179,35 @@ function openZoom(imgs, k) {
   if (!nav) return;
   const marks = [...nav.children];
   const mid = (m) => m.offsetLeft + m.offsetWidth / 2;
-  let cur = -1, dragging = false;
+  let cur = -1;
   const show = (i) => {
     if (i === cur || !marks[i]) return;
     cur = i;
     marks.forEach((m, j) => m.classList.toggle("on", j === i));
-    if (!dragging) nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;
+    nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;   // 지금 장 썸네일을 늘 가운데로
   };
+  const go = (j) => (z.scrollTop = j * z.clientHeight);
   z.onscroll = () => show(Math.round(z.scrollTop / z.clientHeight));
   show(k);
-  marks.forEach((m, j) => (m.onclick = () => (z.scrollTop = j * z.clientHeight)));
-  // 썸네일 줄을 끄는 동안 가운데 온 썸네일의 장을 바로 보여준다
-  nav.onscroll = () => {
-    if (!dragging) return;
-    const c = nav.scrollLeft + nav.clientWidth / 2;
-    let j = 0;
-    marks.forEach((m, i) => { if (Math.abs(mid(m) - c) < Math.abs(mid(marks[j]) - c)) j = i; });
-    z.scrollTop = j * z.clientHeight;
-  };
-  nav.ontouchstart = nav.onwheel = () => (dragging = true);
-  nav.onscrollend = () => (dragging = false);
-  z.ontouchstart = (e) => { if (!nav.contains(e.target)) dragging = false; };   // scrollend 없는 브라우저 대비
-  // 마우스로도 끌 수 있게
+  // 썸네일 줄 끌기 — 손가락(마우스) 이동 거리만큼 장을 넘긴다. 장 수가 적어도 끌리게 (디렉터 10-05)
+  // 한 장 넘기는 거리: 많으면 썸네일 한 칸(빠르게 훑기), 적으면 넉넉하게(최대 60px)
+  const step = Math.max(26, Math.min(60, (innerWidth * 0.6) / marks.length));
   nav.onpointerdown = (e) => {
-    if (e.pointerType !== "mouse") return;
-    dragging = true;
-    let x = e.clientX;
-    const move = (ev) => { nav.scrollLeft -= ev.clientX - x; x = ev.clientX; };
-    const up = () => { removeEventListener("pointermove", move); removeEventListener("pointerup", up); };
+    const x0 = e.clientX, i0 = cur;
+    let moved = false;
+    const move = (ev) => {
+      const d = Math.round((x0 - ev.clientX) / step);
+      if (d) moved = true;
+      if (moved) go(Math.max(0, Math.min(marks.length - 1, i0 + d)));
+    };
+    const up = (ev) => {
+      removeEventListener("pointermove", move); removeEventListener("pointerup", up); removeEventListener("pointercancel", up);
+      const j = marks.indexOf(ev.target);
+      if (!moved && j >= 0) go(j);   // 끌지 않고 누르기만 하면 그 장으로
+    };
     addEventListener("pointermove", move);
     addEventListener("pointerup", up);
+    addEventListener("pointercancel", up);
   };
 }
 // 손가락으로 확대한 동안만 한 장씩 붙는 걸 풀어 관성으로 미끄러지게, 아래 표시는 숨김 — 원래 크기로 돌아오면 다시 한 장씩 (디렉터 10-05)
@@ -263,3 +262,13 @@ Promise.all([fetch("data/works.json").then((r) => r.json()), fetch("data/media.j
 const toTop = document.getElementById("to-top");
 addEventListener("scroll", () => (toTop.hidden = scrollY < innerHeight), { passive: true });
 toTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
+
+// 모아보기 — 누르면 목록이 3열 정사각 격자, 한 번 더 누르면 원래대로. 이 브라우저에 기억 (디렉터 10-05)
+const gridBtn = document.getElementById("grid-btn");
+const setCompact = (on) => {
+  document.body.classList.toggle("compact", on);
+  gridBtn.setAttribute("aria-pressed", on);
+  try { localStorage.setItem("compact", on ? "1" : ""); } catch (e) {}
+};
+try { setCompact(localStorage.getItem("compact") === "1"); } catch (e) {}
+gridBtn.onclick = () => setCompact(!document.body.classList.contains("compact"));
