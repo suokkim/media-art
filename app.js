@@ -153,16 +153,59 @@ function render() {
 
 function openZoom(imgs, k) {
   const z = document.getElementById("zoom");
-  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button><div class="zoom-count"></div>` +
-    imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("");
+  // 아래 장수 표시: 몇 장 안 되면 점, 많으면 작은 썸네일 줄 — 끌면 그 장으로 바로바로 (디렉터 10-05)
+  const few = imgs.length <= 7;
+  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button>` +
+    imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("") +
+    (imgs.length > 1 ? `<div class="zoom-nav ${few ? "dots" : "thumbs"}">${imgs.map((i) =>
+      few ? "<i></i>" : `<img src="${i.src}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : "");
   z.hidden = false;
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
-  // 몇 번째 장인지 아래에 (디렉터 10-04)
-  const cnt = z.querySelector(".zoom-count");
-  (z.onscroll = () => (cnt.textContent = `${Math.round(z.scrollTop / z.clientHeight) + 1} / ${imgs.length}`))();
   z.querySelector(".zoom-close").onclick = closeZoom;
+  const nav = z.querySelector(".zoom-nav");
+  if (!nav) return;
+  const marks = [...nav.children];
+  const mid = (m) => m.offsetLeft + m.offsetWidth / 2;
+  let cur = -1, dragging = false;
+  const show = (i) => {
+    if (i === cur || !marks[i]) return;
+    cur = i;
+    marks.forEach((m, j) => m.classList.toggle("on", j === i));
+    if (!few && !dragging) nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;
+  };
+  z.onscroll = () => show(Math.round(z.scrollTop / z.clientHeight));
+  show(k);
+  marks.forEach((m, j) => (m.onclick = () => (z.scrollTop = j * z.clientHeight)));
+  if (few) return;
+  // 썸네일 줄을 끄는 동안 가운데 온 썸네일의 장을 바로 보여준다
+  nav.onscroll = () => {
+    if (!dragging) return;
+    const c = nav.scrollLeft + nav.clientWidth / 2;
+    let j = 0;
+    marks.forEach((m, i) => { if (Math.abs(mid(m) - c) < Math.abs(mid(marks[j]) - c)) j = i; });
+    z.scrollTop = j * z.clientHeight;
+  };
+  nav.ontouchstart = nav.onwheel = () => (dragging = true);
+  nav.onscrollend = () => (dragging = false);
+  z.ontouchstart = (e) => { if (!nav.contains(e.target)) dragging = false; };   // scrollend 없는 브라우저 대비
+  // 마우스로도 끌 수 있게
+  nav.onpointerdown = (e) => {
+    if (e.pointerType !== "mouse") return;
+    dragging = true;
+    let x = e.clientX;
+    const move = (ev) => { nav.scrollLeft -= ev.clientX - x; x = ev.clientX; };
+    const up = () => { removeEventListener("pointermove", move); removeEventListener("pointerup", up); };
+    addEventListener("pointermove", move);
+    addEventListener("pointerup", up);
+  };
 }
+// 손가락으로 확대한 동안만 한 장씩 붙는 걸 풀어 관성으로 미끄러지게, 아래 표시는 숨김 — 원래 크기로 돌아오면 다시 한 장씩 (디렉터 10-05)
+window.visualViewport?.addEventListener("resize", () => {
+  const z = document.getElementById("zoom"), pinched = visualViewport.scale > 1.01;
+  z.style.scrollSnapType = pinched ? "none" : "";
+  z.classList.toggle("pinched", pinched);
+});
 function closeZoom() {
   document.getElementById("zoom").hidden = true;
   document.body.style.overflow = "";
