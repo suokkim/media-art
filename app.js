@@ -156,14 +156,13 @@ function render() {
 function openZoom(imgs, k) {
   const z = document.getElementById("zoom");
   // 아래 장수 표시: 장 수와 상관없이 작은 썸네일 줄 — 끌면 그 장으로 바로바로 (디렉터 10-05)
-  z.innerHTML = `<button class="zoom-close" type="button">${t("close")}</button>` +
+  z.innerHTML = 
     imgs.map((i) => `<div class="z"><img src="${i.src}" alt="" loading="lazy"></div>`).join("") +
     (imgs.length > 1 ? `<div class="zoom-nav thumbs">${imgs.map((i) =>
       `<img src="${i.src}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : "");
   z.hidden = false;
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
-  z.querySelector(".zoom-close").onclick = closeZoom;
   // 사진 밖 빈 여백을 누르면 전체 보기에서 나간다 (디렉터 10-05)
   z.querySelectorAll(".z").forEach((box) => (box.onclick = (e) => { if (e.target === box) closeZoom(); }));
   // 사진을 누르면 누른 자리를 중심으로 확대, 한 번 더 누르면 전체 보기로 (디렉터 10-05)
@@ -181,33 +180,42 @@ function openZoom(imgs, k) {
   if (!nav) return;
   const marks = [...nav.children];
   const mid = (m) => m.offsetLeft + m.offsetWidth / 2;
-  let cur = -1;
+  let cur = -1, dragging = false;
+  const centerOf = (i) => mid(marks[i]) - nav.clientWidth / 2;
   const show = (i) => {
     if (i === cur || !marks[i]) return;
     const first = cur < 0;
     cur = i;
     marks.forEach((m, j) => m.classList.toggle("on", j === i));
-    // 지금 장 썸네일을 늘 가운데로 — 장 수와 상관없이 같은 동작, 미끄러지듯 (디렉터 10-05)
-    nav.scrollTo({ left: mid(marks[i]) - nav.clientWidth / 2, behavior: first ? "instant" : "smooth" });
+    // 지금 장 썸네일을 늘 가운데로 — 끄는 동안은 줄이 손가락을 그대로 따라가므로 건드리지 않는다
+    if (!dragging) nav.scrollTo({ left: centerOf(i), behavior: first ? "instant" : "smooth" });
   };
   const go = (j) => (z.scrollTop = j * z.clientHeight);
   z.onscroll = () => show(Math.round(z.scrollTop / z.clientHeight));
   show(k);
-  // 썸네일 줄 끌기 — 손가락(마우스) 이동 거리만큼 장을 넘긴다. 장 수가 적어도 끌리게 (디렉터 10-05)
-  // 한 장 넘기는 거리: 많으면 썸네일 한 칸(빠르게 훑기), 적으면 넉넉하게(최대 60px)
-  const step = Math.max(30, Math.min(60, (innerWidth * 0.6) / marks.length));
+  // 썸네일 줄 끌기 — 줄이 손가락을 끊김 없이 따라 움직이고, 가운데 온 썸네일의 장이 바로 보인다.
+  // 손을 떼면 가장 가까운 썸네일로 부드럽게 맞춰진다 (디렉터 10-05 "덜컥거리지 않게")
+  // 장 수가 적으면 손가락 이동보다 줄이 덜 움직여(최대 2배 느리게) 한 장씩 고르기 쉽다
+  const pitch = marks.length > 1 ? marks[1].offsetLeft - marks[0].offsetLeft : 30;
+  const step = Math.max(pitch, Math.min(60, (innerWidth * 0.6) / marks.length));
   nav.onpointerdown = (e) => {
-    const x0 = e.clientX, i0 = cur;
+    const x0 = e.clientX, left0 = nav.scrollLeft;
     let moved = false;
     const move = (ev) => {
-      const d = Math.round((x0 - ev.clientX) / step);
-      if (d) moved = true;
-      if (moved) go(Math.max(0, Math.min(marks.length - 1, i0 + d)));
+      const dx = x0 - ev.clientX;
+      if (!moved && Math.abs(dx) < 4) return;
+      moved = dragging = true;
+      const left = Math.max(centerOf(0), Math.min(centerOf(marks.length - 1), left0 + (dx * pitch) / step));
+      nav.scrollLeft = left;
+      const j = Math.round((left - centerOf(0)) / pitch);
+      if (j !== cur) go(j);
     };
     const up = (ev) => {
       removeEventListener("pointermove", move); removeEventListener("pointerup", up); removeEventListener("pointercancel", up);
+      dragging = false;
       const j = marks.indexOf(ev.target);
       if (!moved && j >= 0) go(j);   // 끌지 않고 누르기만 하면 그 장으로
+      else nav.scrollTo({ left: centerOf(cur), behavior: "smooth" });
     };
     addEventListener("pointermove", move);
     addEventListener("pointerup", up);
