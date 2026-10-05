@@ -163,6 +163,17 @@ function openZoom(imgs, k) {
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
   z.querySelector(".zoom-close").onclick = closeZoom;
+  // 사진을 누르면 누른 자리를 중심으로 확대, 한 번 더 누르면 전체 보기로 (디렉터 10-05)
+  z.querySelectorAll(".z img").forEach((img) => (img.onclick = (e) => {
+    const box = img.parentNode, r = img.getBoundingClientRect();
+    const big = box.classList.toggle("big");
+    z.classList.toggle("pinched", big);
+    img.style.width = big ? r.width * 2.5 + "px" : "";
+    if (big) {
+      box.scrollLeft = ((e.clientX - r.left) / r.width) * img.offsetWidth - box.clientWidth / 2;
+      box.scrollTop = ((e.clientY - r.top) / r.height) * img.offsetHeight - box.clientHeight / 2;
+    }
+  }));
   const nav = z.querySelector(".zoom-nav");
   if (!nav) return;
   const marks = [...nav.children];
