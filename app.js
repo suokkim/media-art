@@ -164,6 +164,8 @@ function openZoom(imgs, k) {
   document.body.style.overflow = "hidden";
   z.querySelectorAll(".z")[k].scrollIntoView();
   z.querySelector(".zoom-close").onclick = closeZoom;
+  // 사진 밖 빈 여백을 누르면 전체 보기에서 나간다 (디렉터 10-05)
+  z.querySelectorAll(".z").forEach((box) => (box.onclick = (e) => { if (e.target === box) closeZoom(); }));
   // 사진을 누르면 누른 자리를 중심으로 확대, 한 번 더 누르면 전체 보기로 (디렉터 10-05)
   z.querySelectorAll(".z img").forEach((img) => (img.onclick = (e) => {
     const box = img.parentNode, r = img.getBoundingClientRect();
