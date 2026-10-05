@@ -184,16 +184,18 @@ function openZoom(imgs, k) {
   let cur = -1;
   const show = (i) => {
     if (i === cur || !marks[i]) return;
+    const first = cur < 0;
     cur = i;
     marks.forEach((m, j) => m.classList.toggle("on", j === i));
-    nav.scrollLeft = mid(marks[i]) - nav.clientWidth / 2;   // 지금 장 썸네일을 늘 가운데로
+    // 지금 장 썸네일을 늘 가운데로 — 장 수와 상관없이 같은 동작, 미끄러지듯 (디렉터 10-05)
+    nav.scrollTo({ left: mid(marks[i]) - nav.clientWidth / 2, behavior: first ? "instant" : "smooth" });
   };
   const go = (j) => (z.scrollTop = j * z.clientHeight);
   z.onscroll = () => show(Math.round(z.scrollTop / z.clientHeight));
   show(k);
   // 썸네일 줄 끌기 — 손가락(마우스) 이동 거리만큼 장을 넘긴다. 장 수가 적어도 끌리게 (디렉터 10-05)
   // 한 장 넘기는 거리: 많으면 썸네일 한 칸(빠르게 훑기), 적으면 넉넉하게(최대 60px)
-  const step = Math.max(26, Math.min(60, (innerWidth * 0.6) / marks.length));
+  const step = Math.max(30, Math.min(60, (innerWidth * 0.6) / marks.length));
   nav.onpointerdown = (e) => {
     const x0 = e.clientX, i0 = cur;
     let moved = false;

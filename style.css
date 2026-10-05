@@ -147,10 +147,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .zoom[hidden] { display: none; }
 .zoom-nav { position: fixed; left: 0; right: 0; bottom: 16px; z-index: 51; display: flex; justify-content: center; align-items: center; gap: 7px; transition: opacity .2s; }
 .zoom.pinched .zoom-nav { opacity: 0; pointer-events: none; }
-.zoom-nav.thumbs { justify-content: flex-start; gap: 3px; overflow-x: hidden; padding: 6px calc(50% - 11px); touch-action: none; overscroll-behavior: contain; cursor: grab; }
+.zoom-nav.thumbs { justify-content: flex-start; gap: 8px; overflow-x: hidden; padding: 10px 0; touch-action: none; overscroll-behavior: contain; cursor: grab; }
+.zoom-nav.thumbs::before, .zoom-nav.thumbs::after { content: ""; flex: none; width: calc(50% - 15px); }   /* 양끝 여백 — 첫·마지막 장도 가운데로 올 수 있게 (패딩은 사파리가 끝쪽을 무시) */
 .zoom-nav.thumbs::-webkit-scrollbar { display: none; }
-.zoom-nav.thumbs img { flex: none; width: 22px; height: 22px; object-fit: cover; border-radius: 2px; opacity: .4; transition: opacity .2s, width .2s, height .2s; user-select: none; -webkit-user-drag: none; }
-.zoom-nav.thumbs img.on { opacity: 1; width: 34px; height: 34px; }
+.zoom-nav.thumbs img { flex: none; width: 22px; height: 22px; object-fit: cover; border-radius: 2px; opacity: .4; transition: opacity .25s, transform .25s; user-select: none; -webkit-user-drag: none; }
+.zoom-nav.thumbs img.on { opacity: 1; transform: scale(1.55); }   /* 크기는 transform 으로 — 칸 배치가 안 흔들려 가운데 고정이 정확 */
 .zoom:has(.thumbs) .z { padding-bottom: 64px; box-sizing: border-box; }
 .zoom .z { height: 100vh; height: 100dvh; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; }
 .zoom .z img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: zoom-in; }
