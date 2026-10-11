@@ -186,6 +186,9 @@ function openZoom(imgs, k) {
     if (i === cur || !marks[i]) return;
     const first = cur < 0;
     cur = i;
+    // 다른 장으로 넘어가면 눌러서 키운 확대는 풀어 둔다 — 확대 상태에 갇혀 위아래로 안 넘어가던 문제 (디렉터 10-11)
+    z.querySelectorAll(".z.big").forEach((b) => { b.classList.remove("big"); b.querySelector("img").style.width = ""; });
+    z.classList.remove("pinched");
     marks.forEach((m, j) => m.classList.toggle("on", j === i));
     // 지금 장 썸네일을 늘 가운데로 — 끄는 동안은 줄이 손가락을 그대로 따라가므로 건드리지 않는다
     if (!dragging) nav.scrollTo({ left: centerOf(i), behavior: first ? "instant" : "smooth" });
